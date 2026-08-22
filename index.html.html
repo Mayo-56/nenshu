@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>年収の壁トラッカー</title>
+<link rel="icon" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="年収の壁">
+<meta name="theme-color" content="#2E9BD6">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F4FAFD;
+    --surface: #FFFFFF;
+    --surface-line: #DCEFF7;
+    --ink: #1F2B36;
+    --ink-muted: #7690A0;
+    --sky: #2E9BD6;
+    --sky-deep: #1F7BB0;
+    --sky-tint: #EAF6FC;
+    --ok: #2FA87A;
+    --ok-bg: #E6F6EF;
+    --warn: #E0A62E;
+    --warn-bg: #FBF1DD;
+    --danger: #E0574A;
+    --danger-bg: #FBEAE8;
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Noto Sans JP', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 48px;
+  }
+  .wrap { max-width: 480px; margin: 0 auto; padding: 22px 16px 8px; }
+
+  /* ---- Header / signature mark ---- */
+  header { padding: 4px 4px 20px; }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .brand-mark {
+    flex-shrink: 0;
+    width: 52px; height: 52px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #3FB0E8 0%, #1F7BB0 100%);
+    color: #fff;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 18px rgba(31,123,176,0.32);
+    transform: rotate(-5deg);
+  }
+  .brand-text { min-width: 0; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+  }
+  h1 {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 900;
+    font-size: 23px;
+    line-height: 1.18;
+    margin: 3px 0 0;
+    background: linear-gradient(90deg, #1F7BB0, #3FB0E8 65%, #2E9BD6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .tagline {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin: 12px 2px 0;
+    padding-top: 12px;
+    border-top: 1px dashed var(--surface-line);
+  }
+
+  /* ---- Hero chart ---- */
+  .hero {
+    background: var(--surface);
+    border: 1px solid var(--surface-line);
+    border-radius: 20px;
+    padding: 18px 16px 14px;
+    box-shadow: 0 2px 14px rgba(46,155,214,0.08);
+  }
+  .hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+  .hero-label { font-size: 12px; color: var(--ink-muted); margin: 0 0 2px; }
+  .hero-figure {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+  .hero-figure span { font-size: 13px; font-weight: 500; color: var(--ink-muted); }
+  .hero-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .chart-box { position: relative; height: 250px; margin-top: 6px; }
+  .next-wall-note {
+    text-align: center;
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-top: 8px;
+  }
+  .next-wall-note strong { color: var(--ink); font-family: 'JetBrains Mono', monospace; }
+
+  .legend-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--sky-tint);
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 10px; color: var(--ink-muted);
+  }
+  .legend-swatch { width: 12px; height: 3px; border-radius: 2px; }
+
+  /* ---- Section cards ---- */
+  section.card {
+    background: var(--surface);
+    border: 1px solid var(--surface-line);
+    border-radius: var(--radius);
+    margin-top: 14px;
+    overflow: hidden;
+  }
+  .card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .card-head h2 {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--sky-deep);
+  }
+  .chev { transition: transform 0.25s ease; color: var(--ink-muted); }
+  .card.open .chev { transform: rotate(180deg); }
+  .card-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .card.open .card-body { max-height: 2400px; }
+  .card-body-inner { padding: 0 16px 16px; }
+
+  .field-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 0;
+    border-top: 1px solid var(--sky-tint);
+  }
+  .field-row:first-child { border-top: none; }
+  .field-label { font-size: 13.5px; color: var(--ink); }
+  .field-sub { font-size: 11px; color: var(--ink-muted); display: block; margin-top: 1px; }
+  input[type=number] {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    font-weight: 500;
+    width: 118px;
+    text-align: right;
+    padding: 9px 10px;
+    border: 1px solid var(--surface-line);
+    border-radius: 10px;
+    background: var(--sky-tint);
+    color: var(--ink);
+  }
+  input[type=number]:focus { outline: 2px solid var(--sky); outline-offset: 1px; border-color: var(--sky); }
+
+  .month-grid { display: grid; grid-template-columns: 1fr; gap: 0; }
+  .month-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 0;
+    border-top: 1px solid var(--sky-tint);
+  }
+  .month-row:first-child { border-top: none; }
+  .month-name { font-size: 13px; font-family: 'JetBrains Mono', monospace; width: 44px; color: var(--ink-muted); }
+  .month-row input[type=number] { width: 130px; }
+  .badge-current {
+    font-size: 9.5px;
+    background: var(--sky);
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 999px;
+    margin-left: 6px;
+  }
+
+  .wall-list { display: flex; flex-direction: column; gap: 10px; }
+  .wall-item {
+    border: 1px solid var(--surface-line);
+    border-left: 4px solid var(--sky);
+    border-radius: 12px;
+    padding: 12px 12px;
+  }
+  .wall-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+  .wall-name { font-size: 13px; font-weight: 700; color: var(--ink); line-height: 1.4; }
+  .wall-note { font-size: 11px; color: var(--ink-muted); margin-top: 2px; line-height: 1.4; }
+  .wall-status-pill {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .wall-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .wall-remain { font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+  .wall-threshold-input input { width: 100px; font-size: 13px; padding: 6px 8px; }
+
+  .save-note {
+    text-align: center;
+    font-size: 11px;
+    color: var(--ink-muted);
+    margin-top: 18px;
+    padding: 0 20px;
+    line-height: 1.6;
+  }
+  .disclaimer {
+    text-align: center;
+    font-size: 10.5px;
+    color: var(--ink-muted);
+    margin-top: 10px;
+    padding: 0 24px 20px;
+    line-height: 1.7;
+  }
+
+  button.reset-btn {
+    display: block;
+    margin: 18px auto 0;
+    background: none;
+    border: 1px solid var(--surface-line);
+    color: var(--ink-muted);
+    font-size: 12px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="brand">
+      <div class="brand-mark">壁</div>
+      <div class="brand-text">
+        <div class="eyebrow">Personal Finance Tracker</div>
+        <h1>年収の壁<br>トラッカー</h1>
+      </div>
+    </div>
+    <p class="tagline">バイト収入を、壁の手前で見える形に。</p>
+  </header>
+
+  <!-- Hero chart -->
+  <div class="hero">
+    <div class="hero-top">
+      <div>
+        <p class="hero-label">今の見込み年収</p>
+        <p class="hero-figure" id="totalFigure">0<span>円</span></p>
+      </div>
+      <div class="hero-status" id="heroStatus">
+        <span class="dot"></span><span id="heroStatusText">計算中</span>
+      </div>
+    </div>
+    <div class="chart-box">
+      <div id="incomeChart" style="width:100%;height:100%;"></div>
+    </div>
+    <p class="next-wall-note">次の壁まで <strong id="nextWallFigure">-</strong> <span id="nextWallName"></span></p>
+    <div class="legend-row" id="legendRow"></div>
+  </div>
+
+  <!-- 基本情報 -->
+  <section class="card open" id="cardBasic">
+    <div class="card-head" onclick="toggleCard('cardBasic')">
+      <h2>基本情報</h2>
+      <span class="chev">▾</span>
+    </div>
+    <div class="card-body"><div class="card-body-inner">
+      <div class="field-row">
+        <div><span class="field-label">時給</span><span class="field-sub">円</span></div>
+        <input type="number" inputmode="numeric" id="hourlyWage">
+      </div>
+      <div class="field-row">
+        <div><span class="field-label">想定月間シフト時間</span><span class="field-sub">未入力の月の見込み計算に使用</span></div>
+        <input type="number" inputmode="numeric" id="monthlyHours">
+      </div>
+      <div class="field-row">
+        <div><span class="field-label">バイト開始月</span><span class="field-sub">今のバイトを始めた月(1〜12)。この月より前は、実績を入力しない限り自動で0円として計算されます</span></div>
+        <input type="number" inputmode="numeric" min="1" max="12" id="startMonth">
+      </div>
+      <div class="field-row">
+        <div><span class="field-label">今月</span><span class="field-sub">現在の月(1〜12)。月別リストで「今月」の行に印を付けるためだけに使う項目で、金額の計算には影響しません</span></div>
+        <input type="number" inputmode="numeric" min="1" max="12" id="currentMonth">
+      </div>
+    </div></div>
+  </section>
+
+  <!-- 月別実績 -->
+  <section class="card" id="cardMonths">
+    <div class="card-head" onclick="toggleCard('cardMonths')">
+      <h2>月別の実績収入</h2>
+      <span class="chev">▾</span>
+    </div>
+    <div class="card-body"><div class="card-body-inner">
+      <p class="field-sub" style="margin:0 0 4px;">全ての月に実績を入力できます。空欄の月は時給×想定シフト時間で見込み計算されます。</p>
+      <div class="month-grid" id="monthGrid"></div>
+    </div></div>
+  </section>
+
+  <!-- 壁一覧 -->
+  <section class="card open" id="cardWalls">
+    <div class="card-head" onclick="toggleCard('cardWalls')">
+      <h2>壁との比較</h2>
+      <span class="chev">▾</span>
+    </div>
+    <div class="card-body"><div class="card-body-inner">
+      <div class="wall-list" id="wallList"></div>
+    </div></div>
+  </section>
+
+  <p class="save-note">入力内容はこの端末に自動保存されます。<br>次回開いたときも続きから確認できます。</p>
+  <p class="disclaimer">壁の金額は2026年時点の目安です。税制は年度により変動するため、正式な判断はバイト先・保護者・税理士等にご確認ください。</p>
+  <button class="reset-btn" onclick="resetAll()">初期値に戻す</button>
+
+</div>
+
+<script>
+const MONTH_NAMES = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+
+const DEFAULT_STATE = {
+  hourlyWage: 1225,
+  monthlyHours: 50,
+  startMonth: 6,
+  currentMonth: 8,
+  walls: [
+    { key:'jumin',   name:'住民税の壁',                  note:'超えると住民税が発生(自治体差あり)',      threshold:1100000, color:'#4FB8AE' },
+    { key:'shotoku', name:'所得税の壁(学生本人)',          note:'勤労学生控除適用時。超えると所得税が発生', threshold:1630000, color:'#8B7FD1' },
+    { key:'shakai',  name:'社会保険 扶養の壁(19〜22歳特例)', note:'超えると自分で社会保険に加入が必要',       threshold:1500000, color:'#E0A62E' },
+    { key:'genzoku', name:'親の扶養控除 段階減額ライン',    note:'超えると親の控除が段階的に減少',           threshold:1500000, color:'#E0A62E' },
+    { key:'shometsu',name:'親の扶養控除 消滅ライン',        note:'超えると親の控除が0円に',                 threshold:1880000, color:'#E0574A' },
+  ],
+  actuals: { 6:12354, 7:62077, 8:102613 }
+};
+
+let state = null;
+let chartInstance = null;
+const STORAGE_KEY = 'nenshu-kabe-state-v1';
+
+function fmtYen(n) {
+  const r = Math.round(n);
+  return (r < 0 ? '-' : '') + Math.abs(r).toLocaleString('ja-JP') + '円';
+}
+
+function toggleCard(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+function computeMonthlyValues() {
+  const wage = Number(state.hourlyWage) || 0;
+  const hours = Number(state.monthlyHours) || 0;
+  const start = Number(state.startMonth) || 1;
+  const forecastEach = wage * hours;
+  const used = [];
+  let cum = 0;
+  const cumulative = [];
+  for (let m = 1; m <= 12; m++) {
+    let val;
+    if (state.actuals[m] !== undefined && state.actuals[m] !== null && state.actuals[m] !== '') {
+      val = Number(state.actuals[m]);
+    } else if (m < start) {
+      val = 0;
+    } else {
+      val = forecastEach;
+    }
+    used.push(val);
+    cum += val;
+    cumulative.push(cum);
+  }
+  return { used, cumulative, total: cum };
+}
+
+function statusOf(total, threshold) {
+  if (total <= threshold * 0.9) return 'ok';
+  if (total <= threshold) return 'warn';
+  return 'danger';
+}
+const STATUS_LABEL = { ok:'OK', warn:'注意', danger:'超過' };
+const STATUS_COLOR = { ok:'#2FA87A', warn:'#E0A62E', danger:'#E0574A' };
+const STATUS_BG = { ok:'var(--ok-bg)', warn:'var(--warn-bg)', danger:'var(--danger-bg)' };
+
+function render() {
+  document.getElementById('hourlyWage').value = state.hourlyWage;
+  document.getElementById('monthlyHours').value = state.monthlyHours;
+  document.getElementById('startMonth').value = state.startMonth;
+  document.getElementById('currentMonth').value = state.currentMonth;
+
+  const grid = document.getElementById('monthGrid');
+  grid.innerHTML = '';
+  const cur = Number(state.currentMonth) || 1;
+  for (let m = 1; m <= 12; m++) {
+    const row = document.createElement('div');
+    row.className = 'month-row';
+    const label = document.createElement('div');
+    label.className = 'month-name';
+    label.textContent = MONTH_NAMES[m-1];
+    if (m === cur) {
+      const b = document.createElement('span');
+      b.className = 'badge-current';
+      b.textContent = '今月';
+      label.appendChild(b);
+    }
+    const input = document.createElement('input');
+    input.type = 'number';
+    input.inputMode = 'numeric';
+    input.value = state.actuals[m] !== undefined ? state.actuals[m] : '';
+    input.addEventListener('input', (e) => {
+      const v = e.target.value;
+      state.actuals[m] = v === '' ? undefined : Number(v);
+      persist();
+      renderCompute();
+    });
+    row.appendChild(label);
+    row.appendChild(input);
+    grid.appendChild(row);
+  }
+
+  renderCompute();
+}
+
+function renderCompute() {
+  const { cumulative, total } = computeMonthlyValues();
+  document.getElementById('totalFigure').innerHTML = fmtYen(total).replace('円','') + '<span>円</span>';
+
+  const walls = state.walls;
+  let worst = 'ok';
+  walls.forEach(w => {
+    const s = statusOf(total, w.threshold);
+    if (s === 'danger') worst = 'danger';
+    else if (s === 'warn' && worst !== 'danger') worst = 'warn';
+  });
+  const upcoming = walls.filter(w => w.threshold > total).sort((a,b)=>a.threshold-b.threshold);
+  const nextWall = upcoming[0] || walls.slice().sort((a,b)=>a.threshold-b.threshold)[walls.length-1];
+
+  const heroStatus = document.getElementById('heroStatus');
+  const dot = heroStatus.querySelector('.dot');
+  dot.style.background = STATUS_COLOR[worst];
+  heroStatus.style.background = STATUS_BG[worst];
+  heroStatus.style.color = STATUS_COLOR[worst];
+  document.getElementById('heroStatusText').textContent =
+    worst === 'ok' ? '全ての壁に余裕あり' : worst === 'warn' ? 'いずれかの壁に接近中' : 'いずれかの壁を超過';
+
+  const remain = nextWall.threshold - total;
+  document.getElementById('nextWallFigure').textContent = remain >= 0 ? fmtYen(remain) : ('超過 ' + fmtYen(-remain));
+  document.getElementById('nextWallName').textContent = '(' + nextWall.name + ')';
+
+  renderChart(cumulative, walls);
+  renderLegend(walls);
+  renderWallList(total, walls);
+}
+
+function renderChart(cumulative, walls) {
+  const container = document.getElementById('incomeChart');
+
+  // group walls by threshold value so shared lines get combined labels
+  const byThreshold = {};
+  walls.forEach(w => {
+    if (!byThreshold[w.threshold]) byThreshold[w.threshold] = { color: w.color, names: [] };
+    byThreshold[w.threshold].names.push(w.name.replace(/\(.*?\)/,''));
+  });
+  const thresholdEntries = Object.entries(byThreshold).map(([th, info]) => ({ th: Number(th), ...info }));
+
+  const W = 400, H = 250;
+  const padL = 40, padR = 46, padT = 14, padB = 24;
+  const plotW = W - padL - padR;
+  const plotH = H - padT - padB;
+
+  const maxThresh = Math.max(...thresholdEntries.map(e => e.th));
+  const maxVal = Math.max(maxThresh, ...cumulative) * 1.06;
+
+  const xStep = plotW / (cumulative.length - 1);
+  const xPos = i => padL + xStep * i;
+  const yPos = v => padT + plotH - (v / maxVal) * plotH;
+
+  // ---- y-axis grid lines (5 ticks) ----
+  let gridSvg = '';
+  const tickCount = 5;
+  for (let t = 0; t <= tickCount; t++) {
+    const val = (maxVal / tickCount) * t;
+    const y = yPos(val);
+    gridSvg += `<line x1="${padL}" y1="${y.toFixed(1)}" x2="${W - padR}" y2="${y.toFixed(1)}" stroke="#DCEFF7" stroke-width="1"/>`;
+    gridSvg += `<text x="${padL - 6}" y="${(y + 3).toFixed(1)}" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="9" fill="#7690A0">${Math.round(val/10000)}万</text>`;
+  }
+
+  // ---- wall reference lines (dashed, colored, labeled) ----
+  let wallSvg = '';
+  thresholdEntries.forEach(entry => {
+    const y = yPos(entry.th);
+    if (y < padT - 4 || y > H - padB + 4) return;
+    wallSvg += `<line x1="${padL}" y1="${y.toFixed(1)}" x2="${W - padR}" y2="${y.toFixed(1)}" stroke="${entry.color}" stroke-width="1.5" stroke-dasharray="6,4"/>`;
+    wallSvg += `<text x="${W - padR + 4}" y="${(y + 3).toFixed(1)}" font-family="JetBrains Mono, monospace" font-weight="700" font-size="9.5" fill="${entry.color}">${Math.round(entry.th/10000)}万</text>`;
+  });
+
+  // ---- cumulative income line + area ----
+  let lineD = '';
+  let dotsSvg = '';
+  cumulative.forEach((v, i) => {
+    const x = xPos(i), y = yPos(v);
+    lineD += (i === 0 ? 'M' : 'L') + x.toFixed(1) + ',' + y.toFixed(1) + ' ';
+    dotsSvg += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.6" fill="#2E9BD6"/>`;
+  });
+  const areaD = lineD + `L ${xPos(cumulative.length - 1).toFixed(1)},${(padT + plotH).toFixed(1)} L ${xPos(0).toFixed(1)},${(padT + plotH).toFixed(1)} Z`;
+
+  // ---- x-axis month labels ----
+  let xLabelSvg = '';
+  MONTH_NAMES.forEach((name, i) => {
+    if (i % 2 !== 0) return; // avoid crowding: show every other month
+    xLabelSvg += `<text x="${xPos(i).toFixed(1)}" y="${H - 6}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#7690A0">${name}</text>`;
+  });
+
+  container.innerHTML = `
+    <svg viewBox="0 0 ${W} ${H}" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2E9BD6" stop-opacity="0.28"/>
+          <stop offset="100%" stop-color="#2E9BD6" stop-opacity="0.02"/>
+        </linearGradient>
+      </defs>
+      ${gridSvg}
+      ${wallSvg}
+      <path d="${areaD}" fill="url(#areaFill)" stroke="none"/>
+      <path d="${lineD.trim()}" fill="none" stroke="#2E9BD6" stroke-width="2.75" stroke-linejoin="round" stroke-linecap="round"/>
+      ${dotsSvg}
+      ${xLabelSvg}
+    </svg>
+  `;
+}
+
+function renderLegend(walls) {
+  const byThreshold = {};
+  walls.forEach(w => {
+    if (!byThreshold[w.threshold]) byThreshold[w.threshold] = { color: w.color, names: [] };
+    byThreshold[w.threshold].names.push(w.name.replace(/\(.*?\)/,''));
+  });
+  const row = document.getElementById('legendRow');
+  row.innerHTML = '';
+  Object.entries(byThreshold).forEach(([th, info]) => {
+    const el = document.createElement('div');
+    el.className = 'legend-item';
+    el.innerHTML = `<span class="legend-swatch" style="background:${info.color}"></span>${info.names.join('・')}(${Number(th)/10000}万)`;
+    row.appendChild(el);
+  });
+}
+
+function renderWallList(total, walls) {
+  const wallList = document.getElementById('wallList');
+  wallList.innerHTML = '';
+  walls.forEach((w, idx) => {
+    const s = statusOf(total, w.threshold);
+    const remainW = w.threshold - total;
+    const item = document.createElement('div');
+    item.className = 'wall-item';
+    item.style.borderLeftColor = w.color;
+    item.innerHTML = `
+      <div class="wall-top">
+        <div>
+          <div class="wall-name">${w.name}</div>
+          <div class="wall-note">${w.note}</div>
+        </div>
+        <div class="wall-status-pill" style="background:${STATUS_BG[s]};color:${STATUS_COLOR[s]}">${STATUS_LABEL[s]}</div>
+      </div>
+      <div class="wall-bottom">
+        <div class="wall-remain">残り <strong>${remainW >= 0 ? fmtYen(remainW) : ('超過 ' + fmtYen(-remainW))}</strong></div>
+        <div class="wall-threshold-input">
+          <input type="number" inputmode="numeric" data-idx="${idx}" value="${w.threshold}">
+        </div>
+      </div>
+    `;
+    wallList.appendChild(item);
+    item.querySelector('input').addEventListener('input', (e) => {
+      state.walls[idx].threshold = Number(e.target.value) || 0;
+      persist();
+      renderCompute();
+    });
+  });
+}
+
+function persist() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (err) {
+    console.error('save failed', err);
+  }
+}
+
+function bindBasicInputs() {
+  ['hourlyWage','monthlyHours','startMonth','currentMonth'].forEach(id => {
+    document.getElementById(id).addEventListener('input', (e) => {
+      state[id] = Number(e.target.value) || 0;
+      persist();
+      render();
+    });
+  });
+}
+
+function resetAll() {
+  if (!confirm('全ての入力内容を初期値に戻します。よろしいですか？')) return;
+  state = JSON.parse(JSON.stringify(DEFAULT_STATE));
+  persist();
+  render();
+}
+
+async function init() {
+  bindBasicInputs();
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    state = saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(DEFAULT_STATE));
+  } catch (err) {
+    state = JSON.parse(JSON.stringify(DEFAULT_STATE));
+  }
+  render();
+}
+
+init();
+</script>
+</body>
+</html>
